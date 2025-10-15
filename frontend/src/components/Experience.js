@@ -26,6 +26,14 @@ const Experience = () => {
         <h2 className="section-title">Experience</h2>
         <div className="section-underline"></div>
 
+        <div className="experience-intro">
+          <ul className="experience-intro-list">
+            <li>I led front-end development with <span className="emphasis">React</span> and improved website performance by <span className="emphasis">30%</span>.</li>
+            <li>I collaborated with a <span className="emphasis">team of 5+ developers</span> to build engaging, user-focused features.</li>
+            <li>I also contributed to <span className="emphasis">backend development and API integrations</span> for seamless functionality.</li>
+          </ul>
+        </div>
+
         <div className="experience-grid">
           {experiences.map((exp, index) => (
             <Card key={index} className="experience-card">

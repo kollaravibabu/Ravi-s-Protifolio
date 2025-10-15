@@ -5,9 +5,9 @@ import { Code, Database, Server } from 'lucide-react';
 
 const About = () => {
   const highlights = [
-    { icon: Code, title: 'Frontend', count: '5+' },
-    { icon: Server, title: 'Backend', count: '3+' },
-    { icon: Database, title: 'Databases', count: '3+' },
+  { icon: Code, title: 'Frontend', count: '5+' },
+  { icon: Server, title: 'Fullstack', count: '3+' },
+  { icon: Database, title: 'Databases', count: '3+' },
   ];
 
   const scrollToProjects = () => {

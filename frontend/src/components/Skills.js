@@ -49,8 +49,9 @@ const Skills = () => {
   return (
     <section id="skills" className="skills-section">
       <div className="section-container">
-        <h2 className="section-title">Skills</h2>
-        <div className="section-underline"></div>
+  <h2 className="section-title">Technical Skills</h2>
+  <div className="section-underline"></div>
+  <p className="section-subtitle">Technologies I work with</p>
 
         <div className="skills-grid">
           {skillCategories.map((category, index) => (
