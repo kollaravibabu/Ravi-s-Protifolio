@@ -36,7 +36,7 @@ const Projects = () => {
       description: 'Food ordering application with restaurant management and delivery tracking',
       image: 'https://res.cloudinary.com/dkwmrpolu/image/upload/v1760353904/food_munch_oupcop.png',
       tags: ['React', 'Express', 'MongoDB'],
-      url: 'https://github.com/kollaravibabu/food-munch',
+      url: 'https://ravibabufood.ccbp.tech',
     },
     {
       title: 'College Complaint Management',
