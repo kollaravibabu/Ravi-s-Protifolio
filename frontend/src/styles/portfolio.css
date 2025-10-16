@@ -522,79 +522,6 @@ section {
   border-radius: 2px;
 }
 
-/* Experience intro centered list */
-.experience-intro {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.experience-intro-list {
-  list-style: disc;
-  max-width: 720px;
-  padding-left: 1.25rem;
-  color: var(--text-primary);
-  line-height: 1.8;
-}
-
-.experience-intro-list li {
-  margin-bottom: 0.75rem;
-}
-
-/* Emphasis color: inherit in light theme, yellow in dark theme */
-.experience-intro-list .emphasis {
-  color: var(--accent-primary);
-  font-weight: 700;
-}
-
-.dark .experience-intro-list .emphasis {
-  color: #ffdd57; /* yellow in dark theme */
-}
-
-/* Center Skills title/underline/subtitle and ensure underline uses green accent */
-.skills-section .section-title {
-  text-align: center;
-}
-
-.skills-section .section-underline {
-  margin-left: auto;
-  margin-right: auto;
-  background: linear-gradient(135deg, #14b8a6, #06b6d4); /* greenish gradient */
-}
-
-.skills-section .section-subtitle {
-  text-align: center;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-}
-
-/* About section: ensure heading and green underline are centered */
-.about-section .section-title {
-  text-align: center;
-}
-.about-section .section-underline {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(135deg, #14b8a6, #06b6d4);
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2rem;
-  border-radius: 2px;
-}
-
-/* Make Technical Skills title more prominent */
-.skills-section .section-title {
-  font-size: 2.75rem; /* slightly larger than other section titles */
-  font-weight: 800; /* bolder weight */
-  letter-spacing: -0.5px;
-}
-
-.skills-section .section-subtitle {
-  color: var(--accent-primary);
-  font-weight: 600;
-  font-size: 1.05rem;
-}
-
 /* About Section */
 .about-section {
   background: var(--bg-secondary);
@@ -602,8 +529,8 @@ section {
 
 .about-content {
   display: grid;
-  grid-template-columns: 1fr; /* stack description then cards underneath */
-  gap: 2rem;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
   align-items: start;
 }
 
@@ -614,56 +541,22 @@ section {
   margin-bottom: 1.5rem;
 }
 
-/* Center About text and add shadow to the text container */
-.about-text {
-  max-width: 900px; /* approx 8/12 of the container */
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  padding: 1.5rem;
-  background: var(--bg-card, transparent);
-  box-shadow: 0 10px 30px rgba(16,24,40,0.06);
-  border-radius: 8px;
-}
-
 .view-projects-btn {
   margin-top: 1rem;
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
 }
 
 .about-cards {
-  /* Use a 12-column grid to allow semantic "col-" like spans
-     Each highlight card will span 12 on xs, 3 on sm, and 4 on md */
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  justify-items: center;
 }
 
 .highlight-card {
-  padding: 1.25rem;
+  padding: 1.5rem;
   transition: all 0.3s ease;
   border: 1px solid var(--border-color);
   text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-  grid-column: span 12; /* full width on very small screens */
-  max-width: 320px; /* constraint when centered */
-}
-
-/* small screens (>=576px) - mimic col-sm-3 (span 3 of 12) */
-@media (min-width: 576px) {
-  .highlight-card {
-    grid-column: span 3;
-    max-width: none;
-  }
-}
-
-/* medium screens (>=768px) - mimic col-md-4 (span 4 of 12) */
-@media (min-width: 768px) {
-  .highlight-card {
-    grid-column: span 4;
-  }
 }
 
 .highlight-card:hover {
@@ -914,51 +807,6 @@ section {
 .experience-description {
   color: var(--text-secondary);
   line-height: 1.6;
-}
-
-/* Center Experience heading and intro */
-.experience-section .section-title {
-  text-align: center;
-}
-.experience-section .section-underline {
-  margin-left: auto;
-  margin-right: auto;
-}
-.experience-intro {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-.experience-intro-list {
-  max-width: 800px; /* constrain width for readability */
-  padding-left: 1.25rem;
-}
-
-/* Constrain each card to a centered 8-column width on larger screens
-   We'll use a max-width and center the card so it visually occupies ~8/12 width */
-.experience-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* default to single column stacking */
-  gap: 2rem;
-}
-
-.experience-grid .experience-card {
-  max-width: 900px; /* approx 8/12 of a 1280px container */
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-@media (min-width: 1024px) {
-  .experience-grid {
-    grid-template-columns: 1fr; /* keep single column but centered cards */
-  }
-}
-
-/* Emphasis highlights only in dark theme */
-.dark .experience-intro .emphasis {
-  color: #ffdd57; /* yellow highlight in dark mode */
-  font-weight: 600;
 }
 
 /* Projects Section */

@@ -27,68 +27,35 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const useBackend = process.env.REACT_APP_USE_BACKEND === 'true';
 
-    if (useBackend) {
-      // Send JSON to backend /api/contact
-      fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-        .then(async (res) => {
-          const data = await res.json().catch(() => null);
-          if (!res.ok) throw new Error(data?.detail || 'Network response was not ok');
-          toast({ title: 'Message Sent Successfully!', description: "Thank you for reaching out. I'll get back to you soon." });
-          setFormData({ name: '', email: '', phone: '', message: '' });
-        })
-        .catch((err) => {
-          console.error('Form submission error', err);
-          toast({ title: 'Submission failed', description: 'There was an error sending your message. Please try again later.', variant: 'destructive' });
-        })
-        .finally(() => setIsSubmitting(false));
-    } else {
-      // Default: POST to Google Apps Script endpoint.
-      // Use JSON + CORS (preferred) and fall back to form-encoded if needed.
-      const endpoint = 'https://script.google.com/macros/s/AKfycbx1snbIikxJpxdOnFN8WapNDA57U5HDM3DyM5mrm0qlIqFrvcJci1b2cVhMcGBIdBsrMg/exec';
+    // ✅ Your deployed Google Apps Script Web App URL
+    const endpoint = 'https://script.google.com/macros/s/AKfycbx_htUo3ERgGGtRX4Cq0QDanALu7selP436a71dHf2VYVEWXEDsBVvXqUaUUx8LQaOV/exec';
 
-      // Try JSON + CORS first. Many Apps Script deployments accept JSON if doPost parses it.
-      fetch(endpoint, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+    // ✅ Use FormData (best for Apps Script + no-cors)
+    const form = new FormData();
+    Object.keys(formData).forEach((key) => form.append(key, formData[key]));
+
+    fetch(endpoint, {
+      method: 'POST',
+      mode: 'no-cors', // needed to bypass CORS restrictions
+      body: form,
+    })
+      .then(() => {
+        toast({
+          title: 'Message Sent Successfully!',
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ name: '', email: '', phone: '', message: '' });
       })
-        .then(async (res) => {
-          // If the response is opaque (no-cors or CORS blocked), res.ok may be false and status 0.
-          if (res.type === 'opaque' || res.status === 0) {
-            // Fallback to form-encoded POST (no-cors) for older Apps Script endpoints
-            const params = new URLSearchParams();
-            Object.keys(formData).forEach((key) => params.append(key, formData[key]));
-            return fetch(endpoint, {
-              method: 'POST',
-              mode: 'no-cors',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-              body: params.toString(),
-            });
-          }
-          if (!res.ok) throw new Error('Network response was not ok');
-          return res.text();
-        })
-        .then(() => {
-          toast({ title: 'Message Sent Successfully!', description: "Thank you for reaching out. I'll get back to you soon." });
-          setFormData({ name: '', email: '', phone: '', message: '' });
-        })
-        .catch((err) => {
-          console.error('Form submission error', err);
-          toast({ title: 'Submission failed', description: 'There was an error sending your message. Please try again later.', variant: 'destructive' });
-        })
-        .finally(() => setIsSubmitting(false));
-    }
+      .catch((err) => {
+        console.error('Form submission error', err);
+        toast({
+          title: 'Submission failed',
+          description: 'There was an error sending your message. Please try again later.',
+          variant: 'destructive',
+        });
+      })
+      .finally(() => setIsSubmitting(false));
   };
 
   return (
@@ -99,7 +66,7 @@ const Contact = () => {
 
         <div className="contact-wrapper">
           <Card className="contact-card">
-            <form onSubmit={handleSubmit} className="contact-form">
+            <form id="contact-form" onSubmit={handleSubmit} className="contact-form">
               <div className="form-group">
                 <Label htmlFor="name">Name</Label>
                 <Input
