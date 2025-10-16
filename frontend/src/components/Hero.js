@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { Linkedin, Github, Mail, Instagram, MessageCircle, Download } from 'lucide-react';
+import Typewriter from './Typewriter';
 
 const Hero = () => {
   const socialLinks = [
@@ -20,7 +21,7 @@ const Hero = () => {
               Hi, I am <span className="animated-name">Ravibabu</span>
             </h2>
             <h1 className="hero-title">
-              I'm a <span className="gradient-text">Full Stack Developer</span>
+              I'm a <span className="gradient-text"><Typewriter words={["Full Stack Developer", "Web Developer"]} /></span>
             </h1>
             <p className="hero-description">
               Crafting seamless digital experiences with modern web technologies

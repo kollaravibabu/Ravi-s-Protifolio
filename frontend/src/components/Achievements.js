@@ -9,13 +9,13 @@ const Achievements = () => {
       title: 'Karthik Wood Works',
       description: 'Successfully launched a comprehensive booking and representation website for woodwork services',
       icon: TrendingUp,
-      linkedInUrl: 'https://www.linkedin.com/posts/ravibabukolla_freelancewebdeveloper-webdevelopment-reactjs-activity-7380010275678138368-sTSe?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEqwsn4B9XPUfJk5xE3fzhiqEU30ftrtOMI',
+      url: 'https://www.karthikwoodworks.com/',
     },
     {
       title: 'suddhifarms',
       description: 'Developed and deployed a farm product selling platform connecting farmers with customers',
       icon: TrendingUp,
-      linkedInUrl: 'https://www.linkedin.com/posts/ravibabukolla_webdevelopment-frontenddevelopment-uiuxdesign-activity-7383610226039554048--Cev?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEqwsn4B9XPUfJk5xE3fzhiqEU30ftrtOMI',
+      url: 'https://www.suddhifarms.com/',
     },
   ];
 
@@ -36,10 +36,10 @@ const Achievements = () => {
                 <p className="achievement-description">{achievement.description}</p>
                 <Button 
                   className="linkedin-btn"
-                  onClick={() => window.open(achievement.linkedInUrl, '_blank')}
+                  onClick={() => window.open(achievement.url, '_blank')}
                 >
                   <Linkedin className="icon-sm" />
-                  See LinkedIn Post
+                  Visit Website
                 </Button>
               </div>
             </Card>

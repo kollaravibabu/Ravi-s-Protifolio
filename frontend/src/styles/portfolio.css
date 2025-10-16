@@ -295,6 +295,29 @@ section {
   background-clip: text;
 }
 
+/* Typewriter styles */
+.typewriter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.typewriter-text {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  color: var(--accent-primary);
+  font-weight: 700;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
 .hero-title {
   font-size: 2.4rem;
   font-weight: 700;
@@ -1271,13 +1294,6 @@ section {
   color: #ffffff;
   font-weight: 700;
   display: inline-block;
-  animation: footerPulse 2s ease-in-out infinite;
-}
-
-@keyframes footerPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.06); }
-  100% { transform: scale(1); }
 }
 
 .heart-icon {
@@ -1383,25 +1399,38 @@ section {
     }
   }
 
+  /* On mobile show all three cards side-by-side without horizontal scrolling.
+     Use a compact 3-column grid and reduce paddings & sizes so cards fit. */
   .about-cards {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* three columns even on mobile */
+    gap: 0.5rem;                             /* tighter gap to save space */
+    overflow-x: visible;                    /* no horizontal scroll */
+    padding-bottom: 0;                      /* remove extra padding */
   }
 
-  /* Mobile: make About highlight cards 2 columns and center the extra card */
-  @media (max-width: 480px) {
-    .about-cards {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-      justify-items: center;
-      align-items: start;
-    }
+  /* Reduce card padding and scale down icon/count sizes for mobile */
+  .about-cards > .highlight-card {
+    padding: 0.8rem;
+    text-align: center;
+    min-width: 0;
+    max-width: none;
+  }
 
-    /* If there's an odd number of cards (3), center the last one on its own row */
-    .about-cards > .highlight-card:nth-child(3) {
-      grid-column: 1 / -1; /* span full width */
-      justify-self: center;
-      max-width: 220px;
-    }
+  .about-cards .highlight-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+    border-radius: 0.6rem;
+  }
+
+  .about-cards .highlight-count {
+    font-size: 1.4rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .about-cards .highlight-title {
+    font-size: 0.85rem;
   }
 
   .header-container {
