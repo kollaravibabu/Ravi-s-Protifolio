@@ -545,36 +545,6 @@ section {
   border-radius: 2px;
 }
 
-/* Center the title and underline for Experience section specifically */
-.experience-section .section-title {
-  text-align: center;
-}
-
-.experience-section .section-underline {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Center titles and underlines for several main sections */
-.about-section .section-title,
-.skills-section .section-title,
-.projects-section .section-title,
-.certificates-section .section-title,
-.achievements-section .section-title,
-.contact-section .section-title {
-  text-align: center;
-}
-
-.about-section .section-underline,
-.skills-section .section-underline,
-.projects-section .section-underline,
-.certificates-section .section-underline,
-.achievements-section .section-underline,
-.contact-section .section-underline {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /* About Section */
 .about-section {
   background: var(--bg-secondary);
@@ -860,86 +830,6 @@ section {
 .experience-description {
   color: var(--text-secondary);
   line-height: 1.6;
-}
-
-/* Experience highlights list (below the section header) */
-.experience-highlights {
-  margin-bottom: 1.5rem;
-}
-
-.experience-highlights ul {
-  list-style: none;
-  padding-left: 0;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.experience-highlights li {
-  position: relative;
-  padding-left: 2rem;
-  color: var(--text-primary);
-  background: transparent;
-}
-
-.experience-highlights li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.45rem;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-}
-
-.experience-highlights li strong {
-  color: var(--accent-primary);
-}
-
-/* Center the highlights list */
-.experience-highlights {
-  display: flex;
-  justify-content: center;
-}
-
-/* Make grid 12 columns on large screens and allow wide cards to span 8 columns */
-@media (min-width: 1024px) {
-  .experience-grid {
-    grid-template-columns: repeat(12, 1fr);
-    gap: 2rem;
-  }
-
-  .experience-card {
-    grid-column: span 6; /* default: half width */
-  }
-
-  .experience-card.wide-card {
-    padding: 2rem; /* ensure same padding as other cards */
-    box-sizing: border-box;
-    /* center the wide card by placing it in the middle of 12-column grid */
-    grid-column-start: 3;
-    grid-column-end: span 8;
-  }
-  
-  /* Center the contents of wide cards */
-  .experience-card.wide-card {
-    display: flex;
-    flex-direction: column; /* stack icon above text */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 0.75rem;
-  }
-
-  .experience-card.wide-card .experience-icon {
-    margin-bottom: 0.25rem;
-  }
-
-  .experience-card.wide-card .experience-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
 /* Projects Section */
